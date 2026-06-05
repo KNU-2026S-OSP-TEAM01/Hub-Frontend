@@ -63,6 +63,10 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.image_tag }}
+          build-args: |
+            BACKEND_URL=${{ secrets.BACKEND_URL }}
+            KAKAO_JAVASCRIPT_API_KEY=${{ secrets.KAKAO_JAVASCRIPT_API_KEY }}
+            SWAGGER_URL=${{ secrets.SWAGGER_URL }}
           labels: |
             org.opencontainers.image.title=hub-frontend
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
